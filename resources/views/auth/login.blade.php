@@ -5,11 +5,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Qash - Crypto Exchange Dashboard UI Kit</title>
+    <title>Login Page</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('vendor/qash/images/favicon.png') }}" />
     <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/qash/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/custom-style.css') }}">
 </head>
 
 <body class="{{ Session::get('theme') }}">
@@ -61,16 +63,19 @@
                             <br />
                             <a href="signup.html">Privacy Policy</a>
                         </div> --}}
+                        <span id="change-theme" class="text-dark pb-1 pe-2"><i class="fa fa-2xl fa-moon"></i></span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="{{ asset('vendor/fontawesome/js/all.min.js') }}"></script>
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <script src="{{ asset('vendor/qash/js/scripts.js') }}"></script>
+    <script src="{{ asset('js/custom-scripts.js') }}"></script>
     <script></script>
 </body>
 
