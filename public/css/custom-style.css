@@ -1,3 +1,8 @@
+:root {
+    --new-dark-theme: #222831;
+    --new-card-theme: #2f343d;
+}
+
 /* Change Theme */
 #change-theme {
     position: absolute;
@@ -5,6 +10,22 @@
     right: 0;
 }
 
+/* Add Transition to body when change theme */
 body {
     transition: all 0.2s ease-in-out;
+}
+
+/* Remove Image Filter (Brightness) on Logo */
+.dark-theme .header .brand-logo img, .dark-theme .mini-logo img {
+    filter: none;
+}
+
+/* Change Dark Theme Color */
+.dark-theme, .dark-theme .header, .dark-theme .form-control, .dark-theme .form-select, .dark-theme .form-select:hover, .dark-theme .form-select.active, 
+.dark-theme .form-file-text, .dark-theme .table-striped > tbody > tr:nth-of-type(odd), .dark-theme .btcChart .apexcharts-tooltip.light, 
+.dark-theme .btcChart .apexcharts-xaxistooltip.active {
+    background: var(--new-dark-theme) !important;
+}
+.dark-theme .dropdown-menu, .dark-theme .card, .dark-theme .input-group-text, .dark-theme .modal-content {
+    background: var(--new-card-theme) !important;
 }
