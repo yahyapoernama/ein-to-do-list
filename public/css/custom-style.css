@@ -4,3 +4,7 @@
     bottom: 0;
     right: 0;
 }
+
+body {
+    transition: all 0.2s ease-in-out;
+}

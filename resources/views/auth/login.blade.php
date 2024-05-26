@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Login Page</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('vendor/qash/images/favicon.png') }}" />
@@ -63,7 +64,12 @@
                             <br />
                             <a href="signup.html">Privacy Policy</a>
                         </div> --}}
-                        <span id="change-theme" class="text-dark pb-1 pe-2"><i class="fa fa-2xl fa-moon"></i></span>
+                        <span id="change-theme" class="pb-1 pe-2">
+                            <i class="fa fa-2xl fa-sun text-light" @if(Session::get('theme') != 'dark-theme') style="display:none" @endif 
+                                id="change-theme-light"></i>
+                            <i class="fa fa-2xl fa-moon text-dark" @if(Session::get('theme') == 'dark-theme') style="display:none" @endif 
+                                id="change-theme-dark"></i>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -76,7 +82,36 @@
 
     <script src="{{ asset('vendor/qash/js/scripts.js') }}"></script>
     <script src="{{ asset('js/custom-scripts.js') }}"></script>
-    <script></script>
+    <script>
+        $('#change-theme').click(function() {
+            var theme = 'dark-theme';
+            if ($('body').hasClass('dark-theme')) {
+                theme = 'light-theme';
+            }
+            if (theme == 'dark-theme') {
+                $('body').addClass('dark-theme');
+                $('#change-theme-dark').slideUp();
+                $('#change-theme-light').slideDown();
+            } else {
+                $('body').removeClass('dark-theme');
+                $('#change-theme-dark').slideDown();
+                $('#change-theme-light').slideUp();
+            }
+            $.ajax({
+                url: '{{ route("general.change_theme") }}',
+                type: 'POST',
+                data: {
+                    theme: theme,
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
