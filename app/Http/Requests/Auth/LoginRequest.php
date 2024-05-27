@@ -11,6 +11,13 @@ use Illuminate\Validation\ValidationException;
 
 class LoginRequest extends FormRequest
 {
+    protected $userRole = ['User'];
+
+    public function user_role($userRole): void
+    {
+        $this->userRole = $userRole;
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -27,7 +34,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'username' => ['required', 'string'],
             'password' => ['required', 'string'],
         ];
     }
@@ -40,12 +47,18 @@ class LoginRequest extends FormRequest
     public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();
-
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        $loginType = filter_var($this->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $credentials = [
+            $loginType => $this->username,
+            'password' => $this->password,
+            'role' => $this->userRole,
+        ];
+        if (! Auth::attempt($credentials, $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                // 'user' => trans('auth.failed'),
+                'user' => 'Username atau Password tidak sesuai',
             ]);
         }
 

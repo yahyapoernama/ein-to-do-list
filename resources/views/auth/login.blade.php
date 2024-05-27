@@ -29,9 +29,10 @@
                         </div>
                         <div class="auth-form card">
                             <div class="card-body">
-                                <form class="signin_validate row g-3" action="otp-2.html">
+                                <form class="signin_validate row g-3" method="POST" action="{{ route('login') }}">
+                                    @csrf
                                     <div class="col-12">
-                                        <input type="text" class="form-control" placeholder="Username" name="text">
+                                        <input type="text" class="form-control" placeholder="Username" name="username">
                                     </div>
                                     <div class="col-12">
                                         <input type="password" class="form-control" placeholder="Password" name="password">
