@@ -35,9 +35,8 @@
         });
     });
 
-    $("form").submit(function(){
-        console.log('submitted');
+    function btnSubmitSpinner() {
         $('#btn_submit').html('<i class="fa-solid fa-circle-notch fa-spin"></i>');
-    });
+    }
 </script>
 @stack('custom-scripts')

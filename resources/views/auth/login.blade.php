@@ -15,11 +15,11 @@
                 @enderror
                 @csrf
                 <div class="col-12">
-                    <input type="text" class="form-control" placeholder="Username" name="username" required
+                    <input type="text" class="form-control" placeholder="Username" name="username" id="username" required
                         value="{{ ($errors->has('username')) ? implode('', $errors->get('username')) : null }}">
                 </div>
                 <div class="col-12">
-                    <input type="password" class="form-control" placeholder="Password" name="password" required>
+                    <input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
                 </div>
                 {{-- <div class="col-6">
                     <div class="form-check form-switch">
@@ -48,3 +48,11 @@
         <a href="signup.html">Privacy Policy</a>
     </div> --}}
 @endsection
+
+@push('custom-scripts')
+    <script>
+        $('.signin_validate').submit(function () {
+            btnSubmitSpinner();
+        });
+    </script>
+@endpush
