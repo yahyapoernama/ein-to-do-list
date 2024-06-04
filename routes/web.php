@@ -18,6 +18,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::post('/change-theme', [GeneralController::class, 'changeTheme'])->name('general.change_theme');
-
 require __DIR__.'/auth.php';

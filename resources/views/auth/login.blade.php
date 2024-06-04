@@ -1,4 +1,4 @@
-@extends('auth.layouts.app')
+@extends('auth.layouts.app', ['page' => 'Login'])
 
 @section('content')
     <div class="mini-logo text-center my-4">

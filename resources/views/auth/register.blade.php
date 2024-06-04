@@ -1,4 +1,4 @@
-@extends('auth.layouts.app')
+@extends('auth.layouts.app', ['page' => 'Register'])
 
 @push('custom-styles')
     <style>
