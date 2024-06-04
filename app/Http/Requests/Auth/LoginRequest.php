@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -53,12 +54,18 @@ class LoginRequest extends FormRequest
             'password' => $this->password,
             'role' => $this->userRole,
         ];
+        $checkIfExist = User::where('username', $this->username)->orWhere('email', $this->username)->first();
+        if (!$checkIfExist) {
+            throw ValidationException::withMessages([
+                'user' => 'Account with that ' . ucfirst($loginType) . ' was not found',
+            ]);
+        }
         if (! Auth::attempt($credentials, $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
                 // 'user' => trans('auth.failed'),
-                'user' => 'Username atau Password tidak sesuai',
+                'user' => ucfirst($loginType) . ' or Password is incorrect',
             ]);
         }
 

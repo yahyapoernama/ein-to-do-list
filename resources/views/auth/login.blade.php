@@ -30,12 +30,17 @@
                         <div class="auth-form card">
                             <div class="card-body">
                                 <form class="signin_validate row g-3" method="POST" action="{{ route('login') }}">
+                                    @error('user') 
+                                        <div class="col-12">
+                                            <div class="alert alert-danger mb-1 text-center">{{ implode('', $errors->get('user')) }} </div>
+                                        </div>
+                                    @enderror
                                     @csrf
                                     <div class="col-12">
-                                        <input type="text" class="form-control" placeholder="Username" name="username">
+                                        <input type="text" class="form-control" placeholder="Username" name="username" required>
                                     </div>
                                     <div class="col-12">
-                                        <input type="password" class="form-control" placeholder="Password" name="password">
+                                        <input type="password" class="form-control" placeholder="Password" name="password" required>
                                     </div>
                                     {{-- <div class="col-6">
                                         <div class="form-check form-switch">
@@ -47,7 +52,7 @@
                                         <a href="reset.html">Forgot Password?</a>
                                     </div> --}}
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary btn-block">
+                                        <button type="submit" class="btn btn-primary btn-block" id="btn_submit">
                                             Sign in
                                         </button>
                                     </div>
@@ -109,6 +114,11 @@
                     console.error(xhr.responseText);
                 }
             });
+        });
+
+        $("form").submit(function(){
+            console.log('submitted');
+            $('#btn_submit').html('<i class="fa-solid fa-circle-notch fa-spin"></i>');
         });
     </script>
 </body>
