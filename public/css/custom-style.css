@@ -8,6 +8,7 @@
     position: absolute;
     bottom: 0;
     right: 0;
+    margin: 0;
 }
 
 /* Add Transition to body when change theme */

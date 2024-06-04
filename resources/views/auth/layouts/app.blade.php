@@ -22,16 +22,10 @@
                 <div class="row justify-content-center h-100 align-items-center">
                     <div class="col-xl-5 col-md-6">
                         @yield('content')
-                        <div class="dark-light-toggle" id="change-theme" onclick="themeToggle()">
+                        <div class="dark-light-toggle pb-1 pe-2" id="change-theme" onclick="themeToggle()">
                             <span class="dark"><i class="icofont-moon"></i></span>
                             <span class="light"><i class="icofont-sun-alt"></i></span>
                         </div>
-                        {{-- <span id="change-theme" class="pb-1 pe-2">
-                            <i class="fa fa-2xl fa-sun text-light" @if(Session::get('theme') != 'dark-theme') style="display:none" @endif 
-                                id="change-theme-light"></i>
-                            <i class="fa fa-2xl fa-moon text-dark" @if(Session::get('theme') == 'dark-theme') style="display:none" @endif 
-                                id="change-theme-dark"></i>
-                        </span> --}}
                     </div>
                 </div>
             </div>
