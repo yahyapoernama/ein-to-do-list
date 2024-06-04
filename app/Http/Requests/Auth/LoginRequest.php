@@ -58,6 +58,7 @@ class LoginRequest extends FormRequest
         if (!$checkIfExist) {
             throw ValidationException::withMessages([
                 'user' => 'Account with that ' . ucfirst($loginType) . ' was not found',
+                'username' => $this->username,
             ]);
         }
         if (! Auth::attempt($credentials, $this->boolean('remember'))) {
@@ -66,6 +67,7 @@ class LoginRequest extends FormRequest
             throw ValidationException::withMessages([
                 // 'user' => trans('auth.failed'),
                 'user' => ucfirst($loginType) . ' or Password is incorrect',
+                'username' => $this->username,
             ]);
         }
 
