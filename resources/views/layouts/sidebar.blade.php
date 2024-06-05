@@ -1,6 +1,6 @@
 <div class="sidebar">
     <div class="brand-logo">
-      <a href="index.html"><img src="./images/logo.png" alt="" /> </a>
+      <a href="index.html"><img src="{{ asset('assets/img/app/favicon-white.png') }}" alt="" /> </a>
     </div>
     <div class="menu">
       <ul>
