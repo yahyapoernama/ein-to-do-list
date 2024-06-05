@@ -26,7 +26,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('username');
             $table->dropColumn('role');
-            $table->dropColumn('deleted_at');
+            $table->dropSoftDeletes();
         });
     }
 };
