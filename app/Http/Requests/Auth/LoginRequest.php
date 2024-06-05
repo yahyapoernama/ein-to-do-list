@@ -12,12 +12,12 @@ use Illuminate\Validation\ValidationException;
 
 class LoginRequest extends FormRequest
 {
-    protected $userRole = ['User'];
+    // protected $userRole = ['Superadmin', 'Admin', 'User'];
 
-    public function user_role($userRole): void
-    {
-        $this->userRole = $userRole;
-    }
+    // public function user_role($userRole): void
+    // {
+    //     $this->userRole = $userRole;
+    // }
 
     /**
      * Determine if the user is authorized to make this request.
@@ -52,7 +52,7 @@ class LoginRequest extends FormRequest
         $credentials = [
             $loginType => $this->username,
             'password' => $this->password,
-            'role' => $this->userRole,
+            // 'role' => $this->userRole,
         ];
         $checkIfExist = User::where('username', $this->username)->orWhere('email', $this->username)->first();
         if (!$checkIfExist) {
@@ -65,7 +65,6 @@ class LoginRequest extends FormRequest
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                // 'user' => trans('auth.failed'),
                 'user' => ucfirst($loginType) . ' or Password is incorrect',
                 'username' => $this->username,
             ]);
