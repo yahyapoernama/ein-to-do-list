@@ -30,3 +30,16 @@ body {
 .dark-theme .dropdown-menu, .dark-theme .card, .dark-theme .input-group-text, .dark-theme .modal-content {
     background: var(--new-card-theme) !important;
 }
+
+/* Change Sidebar Background Color */
+.sidebar {
+    background: var(--new-card-theme);
+}
+
+.header .brand-logo span {
+    color: var(--new-dark-theme);
+}
+
+.brand-logo img {
+    filter: none;
+}
