@@ -43,3 +43,8 @@ body {
 .brand-logo img {
     filter: none;
 }
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+    transition: all 0.5s ease-in-out !important;
+}
