@@ -68,7 +68,6 @@
                         </div>
                       </div>
                     </a>
-
                     <a href="./settings-activity.html">More <i class="icofont-simple-right"></i></a>
                   </div>
                 </div>
@@ -84,27 +83,13 @@
                     <div class="user">
                       <span class="thumb"><img src="{{ asset('assets/img/avatar/no-avatar.jpg') }}" alt="" class="rounded" /></span>
                       <div class="user-info">
-                        <h5>Jannatul Maowa</h5>
-                        <span>Qash.inc@gmail.com</span>
+                        <h5>{{ auth()->user()->name }}</h5>
+                        <span>{{ auth()->user()->username }}</span>
                       </div>
-                    </div>
-                  </div>
-
-                  <div class="user-balance">
-                    <div class="available">
-                      <p>Available</p>
-                      <span>0.00 BTC</span>
-                    </div>
-                    <div class="total">
-                      <p>Total</p>
-                      <span>0.00 USD</span>
                     </div>
                   </div>
                   <a href="profile.html" class="dropdown-item">
                     <i class="icofont-ui-user"></i>Profile
-                  </a>
-                  <a href="wallet.html" class="dropdown-item">
-                    <i class="icofont-wallet"></i>Wallet
                   </a>
                   <a href="settings-profile.html" class="dropdown-item">
                     <i class="icofont-ui-settings"></i> Setting
@@ -112,12 +97,13 @@
                   <a href="settings-activity.html" class="dropdown-item">
                     <i class="icofont-history"></i> Activity
                   </a>
-                  <a href="lock.html" class="dropdown-item">
-                    <i class="icofont-lock"></i>Lock
-                  </a>
-                  <a href="signin.html" class="dropdown-item logout">
-                    <i class="icofont-logout"></i> Logout
-                  </a>
+                  <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="dropdown-item logout" 
+                        onclick="event.preventDefault(); this.closest('form').submit();">
+                      <i class="icofont-logout"></i> Logout
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>

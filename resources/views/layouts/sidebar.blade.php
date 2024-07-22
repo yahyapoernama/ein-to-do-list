@@ -10,13 +10,13 @@
         </a>
       </li>
       <form method="POST" action="{{ route('logout') }}">
-          @csrf
-          <li class="logout">
-              <a href="#" data-toggle="tooltip" data-placement="right" title="Signout" 
-                  onclick="event.preventDefault(); this.closest('form').submit();">
-                <span><i class="icofont-power"></i></span>
-              </a>
-          </li>
+        @csrf
+        <li class="logout">
+            <a href="#" data-toggle="tooltip" data-placement="right" title="Signout" 
+                onclick="event.preventDefault(); this.closest('form').submit();">
+              <span><i class="icofont-power"></i></span>
+            </a>
+        </li>
       </form>
     </ul>
     {{-- <p class="copyright">&#169; <a href="#">codeefly</a></p> --}}
